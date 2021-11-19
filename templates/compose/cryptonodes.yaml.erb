@@ -1,0 +1,55 @@
+version: '3.6'
+
+services:
+  parity:
+    image: parity/parity:v2.7.2-stable
+    restart: always
+    command: |
+      --chain=kovan
+      --mode=active
+      --interface=all
+      --warp=true
+      --snapshot-peers=10
+      --min-peers=5
+      --max-peers=10
+      --jsonrpc-interface=0.0.0.0
+      --jsonrpc-cors=all
+      --jsonrpc-hosts=all
+      --jsonrpc-apis=all
+      --db-compaction=ssd
+      --no-persistent-txqueue
+    volumes:
+      - ../data/parity:/home/parity/.local/share/io.parity.ethereum
+    ports:
+      - "127.0.0.1:8545:8545"
+
+  bitcoind:
+    image: quay.io/openware/bitcoind:0.19.1
+    restart: always
+    user: root
+    command: bitcoind
+    volumes:
+      - ../data/bitcoin:/bitcoin
+      - ../config/bitcoin.conf:/bitcoin/.bitcoin/bitcoin.conf
+
+  litecoind:
+    image: quay.io/openware/litecoind:0.16.3
+    restart: always
+    volumes:
+      - ../data/litecoin:/litecoin
+      - ../config/litecoin.conf:/litecoin/litecoin.conf
+
+  dashd:
+    image: quay.io/openware/dashd:0.16.1.1
+    restart: always
+    volumes:
+      - ../data/dashcore:/dashcore
+      - ../config/dash.conf:/.dashcore/dash.conf
+
+  bitcoincashd:
+    image: quay.io/openware/bch:0.22.9
+    restart: always
+    command: bitcoincashd
+    volumes:
+      - ../data/bitcoincash:/bitcoincash
+      - ../config/bitcoincash.conf:/bitcoincash/.bitcoincash/bitcoincash.conf

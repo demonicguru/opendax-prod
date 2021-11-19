@@ -1,0 +1,168 @@
+---
+app:
+  name: OpenDAX
+  domain: wexplore3d.com
+  subdomain: exe
+  show_landing: true
+render_protect: false
+csrfEnabled: false
+ssl:
+  enabled: false
+  email: support@example.com
+updateVersions: false
+images:
+  peatio: quay.io/openware/peatio:2.6.48
+  barong: quay.io/openware/barong:2.6.44
+  frontend: quay.io/openware/baseapp:2.6.24
+  tower: quay.io/openware/tower:2.6.66
+  rango: quay.io/openware/rango:2.6.1
+finex:
+  enabled: false
+  image: quay.io/openware/finex:2.6.39
+  license_key: changeme
+vendor:
+  frontend: git@github.com:openware/baseapp.git
+kyc:
+  provider: kycaid
+  authorization_token: 9f64001a16a3b142c21b7754b0c9ffc40b2a
+  sandbox_mode: true
+  api_endpoint: https://api.kycaid.com/
+vault:
+  root_token: s.wqPHffvPXPgkZphmLE99SXlQ
+  peatio_rails_token: s.rmgaTiMSYPqv6pDiCgBIjsva
+  peatio_crypto_token: s.xyvqwPN4phSndUv3bYKsVGpi
+  peatio_upstream_token: s.V9PWmELMWAtVPZnfL3oRbzz0
+  peatio_matching_token: s.ykIXiEXVl0we9orl5ZdJ8lGP
+  barong_token: s.FpQGNYQBYMULUPV2gKyhPdMW
+  finex_engine_token: s.fxhgKEQCftskEwT6aSNDO6yN
+database:
+  host: db
+  adapter: mysql
+  port: 3306
+  user: root
+  password: changeme
+storage:
+  provider: Google
+  bucketName: opendax-barong-docs-bucket
+  region: fra1
+  endpoint: https://fra1.digitaloceanspaces.com
+  accessKey: changeme
+  secretKey: changeme
+  signatureVersion: '2'
+twilio:
+  enabled: true
+  phone_number: "+17255278187"
+  account_sid: AC7e405e0b4a1bdc07576467776a754383
+  auth_token: ab6d3b3d5694683624c7ce957b7f0cb7
+gaTrackerKey: ''
+captcha:
+  type: none
+  siteKey: changeme
+  secretKey: changeme
+smtp:
+  host: smtp.sendgrid.net
+  port: 2525
+  user: apikey
+  password: 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
+  sender_email: noreply@wexplore3d.com
+  sender_name: Wexplore3d
+  sender_logo: https://storage.googleapis.com/public_peatio/logo.png
+wallets:
+  eth:
+  - kind: deposit
+    address: '0x6029164cc80881ad39a71665c4aa7cfd933422b7'
+    max_balance: 0.0
+    secret: JNA7hu33h34DWSjka5hHJh
+  - kind: hot
+    address: '0xf33d419408181866af132ebc3e2e6aaf19138563'
+    max_balance: 100.0
+    secret: 747yUVBH3ygbhj31GY35YUGbjh
+  - kind: warm
+    address: '0xe3d18db4f458593686354eb331023f26fcf9ec8a'
+    max_balance: 1000.0
+    secret: HJGJ8J78g4yu378g4yugb5bFFjh
+  btc:
+  - kind: deposit
+    address: 2NBKSmXroTcDYTKDFwHEWXSwFkS2qUtiztv
+    max_balance: 0.0
+  - kind: hot
+    address: 2Mz33SVx9p7jZjP7LirXD9Dh6k2ZYZrF2QY
+    max_balance: 100.0
+  - kind: warm
+    address: 2N2fWVLRct4ehY4aq8HHvjcLJPpNZhHQ2Bi
+    max_balance: 1000.0
+  ltc:
+  - kind: deposit
+    address: MEFGu4RWbc8coQDd2YxAZPN8BT4LDBp7fP
+    max_balance: 0.0
+  - kind: hot
+    address: MKBRy7Q2ccurdVZzxKL1iYa8E8GK8xf6Bs
+    max_balance: 100.0
+  - kind: warm
+    address: MMLHaNQb5vNjipUxqZkmf83DzmTZtz1TV9
+    max_balance: 1000.0
+  dash:
+  - kind: deposit
+    address: changeme
+    max_balance: 0.0
+  - kind: hot
+    address: changeme
+    max_balance: 100.0
+  - kind: warm
+    address: changeme
+    max_balance: 1000.0
+  bch:
+  - kind: deposit
+    address: changeme
+    max_balance: 0.0
+  - kind: hot
+    address: changeme
+    max_balance: 100.0
+  - kind: warm
+    address: changeme
+    max_balance: 1000.0
+parity:
+  network: testnet
+  address: parity
+  rpcport: 8545
+  port: 30303
+bitcoind:
+  enabled: true
+  rpcuser: admin
+  rpcpassword: changeme
+  address: bitcoind
+  network: testnet
+  rpcport: 18332
+  port: 18333
+litecoind:
+  enabled: true
+  rpcuser: admin
+  rpcpassword: changeme
+  address: litecoind
+  network: mainnet
+  rpcport: 19332
+  port: 19335
+dashd:
+  enabled: true
+  rpcuser: admin
+  rpcpassword: changeme
+  address: dashd
+  network: mainnet
+  rpcport: 9989
+  port: 9988
+bitcoincashd:
+  enabled: true
+  rpcuser: admin
+  rpcpassword: changeme
+  address: bitcoincashd
+  network: testnet
+  rpcport: 17332
+  port: 17333
+terraform:
+  credentials: "~/safe/opendax.json"
+  project: example-opendax
+  region: europe-west4
+  zone: europe-west4-a
+  instance_name: opendax-cloud
+  machine_type: n1-standard-4
+  image: debian-cloud/debian-9

@@ -1,0 +1,2 @@
+gem 'peatio-ripple', '~> 0.1.1'
+gem 'peatio-bitcoincash', '~> 2.6', '>= 2.6.1'

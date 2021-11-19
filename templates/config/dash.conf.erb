@@ -1,0 +1,28 @@
+<%- dashd = @config['dashd'] -%>
+txindex=1
+dnsseed=1
+upnp=0
+printtoconsole=1
+
+#listen=1
+server=1
+#daemon=0
+
+<%- unless dashd['network'] == 'mainnet' -%>
+<%= "#{dashd['network']}=1" %>
+[test]
+<%- end -%>
+rpcuser=<%= dashd['rpcuser'] %>
+rpcpassword=<%= dashd['rpcpassword'] %>
+port=<%= dashd['port'] %>
+rpcport=<%= dashd['rpcport'] %>
+rpcbind=0.0.0.0
+rpcallowip=0.0.0.0/0
+rpcallowip=::/0
+#rpcallowip=127.0.0.1
+
+
+addressindex=1
+timestampindex=1
+spentindex=1
+maxconnections=24

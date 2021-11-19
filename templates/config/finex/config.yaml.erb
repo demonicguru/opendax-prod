@@ -1,0 +1,96 @@
+metrics:
+  enabled: true
+license: <%= @config['finex']['license_key'] %>
+influx:
+  host: influxdb
+  port: 8086
+  scheme: http
+  database: peatio_production
+database:
+  driver: mysql
+  name: peatio_production
+  username: <%= @config['database']['user'] %>
+  password: <%= @config['database']['password'] %>
+  host: <%= @config['database']['host'] %>
+  port: <%= @config['database']['port'] %>
+log_level:
+  log_observer: info
+vault:
+  host: http://vault:8200
+  token: <%= @config['vault']['finex_engine_token'] %>
+  app_name: <%= @config['app']['name'].downcase %>
+messaging:
+  driver: amqp
+  username: guest
+  password: guest
+  host: rabbitmq
+  port: 5672
+  exchanges:
+    - name:    finex.orderapi
+      type:    direct
+      durable: false
+    - name:    finex.events.websocket
+      type:    topic
+      durable: false
+    - name:    peatio.events.ranger
+      type:    topic
+      durable: false
+    - name:    peatio.trade
+      type:    headers
+      durable: false
+    - name:    peatio.events
+      type:    direct
+      durable: false
+    - name: peatio.matching
+      type: direct
+      durable: false
+  queues:
+    - name:    finex.gateway
+    - name:    finex.events.processor
+    - name:    finex.influx.writer
+orderbook:
+  max_publish_size: 300
+gateway:
+  rate:
+    maker:
+      - limit: 500
+        period: 10s
+    admin:
+      - limit: 500
+        period: 10s
+    superadmin:
+      - limit: 500
+        period: 10s
+    bench:
+      - limit: 9000
+        period: 1s
+    default:
+      - limit: 50
+        period: 10s
+      - limit: 10000
+        period: 24h
+api:
+  bulk_limit: 100
+  rate:
+    maker:
+      limit: 500
+      period: 10s
+    admin:
+      limit: 500
+      period: 10s
+    superadmin:
+      limit: 500
+      period: 10s
+    default:
+      limit: 5
+      period: 1s
+  actions:
+    trade:
+      min_level: 2
+      roles: [member, broker, trader, maker, admin, superadmin]
+    bulk_api:
+      min_level: 3
+      roles: [maker, admin, superadmin]
+    admin:
+      min_level: 3
+      roles: [admin, superadmin]

@@ -1,0 +1,36 @@
+<%- litecoind = @config['litecoind'] -%>
+txindex=1
+dnsseed=1
+upnp=0
+printtoconsole=1
+
+server=1
+
+onlynet=ipv4
+
+<%- unless litecoind['network'] == 'mainnet' -%>
+<%= "#{litecoind['network']}=1" %>
+[test]
+<%- end -%>
+rpcuser=<%= litecoind['rpcuser'] %>
+rpcpassword=<%= litecoind['rpcpassword'] %>
+port=<%= litecoind['port'] %>
+rpcport=<%= litecoind['rpcport'] %>
+rpcbind=0.0.0.0
+rpcallowip=0.0.0.0/0
+
+addnode=102.164.0.138
+addnode=107.150.94.76
+addnode=108.175.238.236
+addnode=109.254.80.37
+addnode=113.120.123.23
+addnode=128.199.69.208
+addnode=136.243.37.89
+addnode=144.126.218.243
+addnode=144.91.68.191
+addnode=149.28.75.229
+addnode=164.68.119.129
+addnode=167.99.179.226
+addnode=168.119.79.89
+addnode=173.249.59.169
+addnode=173.56.235.225
