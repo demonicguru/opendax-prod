@@ -52,8 +52,8 @@ storage:
 twilio:
   enabled: true
   phone_number: "+17255278187"
-  account_sid: AC7e405e0b4a1bdc07576467776a754383
-  auth_token: ab6d3b3d5694683624c7ce957b7f0cb7
+  account_sid: changeme
+  auth_token: changeme
 gaTrackerKey: ''
 captcha:
   type: none
@@ -63,7 +63,7 @@ smtp:
   host: smtp.sendgrid.net
   port: 2525
   user: apikey
-  password: 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
+  password: changeme
   sender_email: noreply@wexplore3d.com
   sender_name: Wexplore3d
   sender_logo: https://storage.googleapis.com/public_peatio/logo.png
